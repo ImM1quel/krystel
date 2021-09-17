@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>do you want to go out with me?</title>
+<style>
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgba(25,0,255,0.3),rgba(255,0,25,0.3));
+    width: 100vw;
+    height: 100vw;
+}
+
+div{
+    margin: 10% auto;
+    padding: 5%;
+    width: 75%;
+    height: 100%;
+    text-align: center;
+    font-size: 4em;
+}
+button{
+    font-size: 1em;
+    width: 35%;
+    height: 10%;
+}
+</style>
+</head>
+<body>
+<div>
+    <h1>hola krystel</h1>
+    <p>¿quieres ser mi novia?</p>
+    <button id="yesbtn">si</button>
+    <button id="nobtn">no</button>
+</div>
+<script>
+document.querySelector('#yesbtn').addEventListener('click',function(){
+    alert('yo tambien quiero ser tu novio')
+})
+</script>
+</body>
+</html>
