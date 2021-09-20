@@ -2,42 +2,278 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>do you want to go out with me?</title>
+<meta name="description" content="krystel"/>
+<meta name="keywords" content="krystel" />
+<title>krystel</title>
 <style>
-body{
+*{
     margin: 0;
     padding: 0;
-    background: linear-gradient(rgba(25,0,255,0.3),rgba(255,0,25,0.3));
-    width: 100vw;
-    height: 100vw;
 }
-
-div{
-    margin: 10% auto;
-    padding: 5%;
-    width: 75%;
+body{
+    background: rgba(220,220,220,0.5);
+}
+.contenedor{
+    padding: 3% 8%;
+    width: 90%;
     height: 100%;
+    font-size: 3em;
+    font-family: Times New Roman;
+}
+.contenedor__sub{
     text-align: center;
-    font-size: 4em;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(170,170,170,1);
+    min-width: 400px;
+    max-width: 800px;
+    width: 90%;
+    height: 85%;
+    padding: 6%;
+    margin: 5% auto;
+
+}
+.contenedor__sub div{
+    padding: 5% 7%;
+}
+.contenedor__sub h2{
+    padding: 20px;
+    margin: 40px 20px;
+    border-bottom: 5px solid #000;
+}
+.btn{
+    display: flex;
+    justify-content: space-between;
+}
+.num, .btn__siguiente{
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px 10px;
+    font-size: 1.2em;
+}
+.texto__sonbra{
+    text-shadow: 3px 3px 20px #000;
+    transition: all 2s ease;
+}
+nav {
+    text-align: left;
+}
+img{
+    border-radius: 10px;
+    margin: auto;
+    width: 50%;
 }
 button{
-    font-size: 1em;
-    width: 35%;
+    border-radius: 20px;
+    background: #000;
+    color: #fff;
+    margin: 5%;
+    font-size: 2em;
+    width: 25%;
     height: 10%;
+}
+.btn__activo{
+    background: #fff;
+    color: #000;
 }
 </style>
 </head>
 <body>
-<div>
-    <h1>hola krystel</h1>
-    <p>¿quieres ser mi novia?</p>
-    <button id="yesbtn">si</button>
-    <button id="nobtn">no</button>
+<div class="contenedor">
+    
+    <div class="contenedor__sub">
+    <div>
+        <h2>hi</h2>
+        <p><b>Esta pagiana es solo para krystel</b> es con mucho cariño, luego entenderas y esfuerzo</p>
+        <nav>
+            <p>reglas de la pagina</p>
+            <ul>
+                <li>los numero en la pare de abajo son para moverse entre las paginas</li>
+                <li>el boton de siguientes es para la siguiente pagina</li>
+                <li>leer todo</li>
+                <li>esto sera una presentacion de mi persona</li>
+            </ul>
+            <p>omite algun error ortografico</p>
+            <p>y espero que te guste</p>
+        </nav>
+    </div>
+    </div>
+    
+    <div class="contenedor__sub">
+    <div>
+        <h2>¿Para que cree esta pagina?</h2>
+        <p class="typed0"></p>
+    </div>
+    </div>
+    
+    <div class="contenedor__sub">
+    <div>
+        <h2>¿Quien soy?</h2>
+        <p class="typed1"></p>
+        
+    </div>
+    </div>
+    
+    <div class="contenedor__sub">
+    <div>
+        <h2>¿Que me gusta?</h2>
+        <p class="typed2"></p>
+        
+    </div>
+    </div>
+    
+    <div class="contenedor__sub">
+    <div>
+        <h2>¿Que siento?</h2>
+        <p class="typed3"></p>
+        
+    </div>
+    </div>
+    
+    <div class="contenedor__sub">
+    <div>
+        <h2>me gustaria preguntar</h2>
+        <p>te dustaria conocerme mas</p>
+        <button id="btn__yes">si</button>
+        <button id="btn__no">no</button>
+        <div id="video">
+            <p>A mi tambien me gustaria conocerte</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/p1JmzB6E-C8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div id="no">
+            <p>🥲</p>
+        </div>
+    </div>
+    </div>
+    
+    <div class="btn">
+        <div class="btn__num"></div>
+        <div class="btn__siguiente">siguiente</div>
+    </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-document.querySelector('#yesbtn').addEventListener('click',function(){
-    alert('yo tambien quiero ser tu novio')
-})
+$(document).ready(function() {
+$('#video').hide();
+$('#no').hide();
+var conteValor = $('.contenedor__sub').length;
+var posiValor = 1;
+for (let i = 1; i<= conteValor; i++){
+$('.btn__num').append(`<p class="num">${i}</p>`);
+}
+$('.contenedor__sub').hide();
+$('.contenedor__sub:first').show();
+$('.num:first').addClass('texto__sonbra');
+$('.btn__siguiente').click(siguiente);
+$('.num').click(cambiar);
+
+function cambiar(){
+    var pagina = $(this).index() +1;
+    $('.contenedor__sub').hide();
+    $('.contenedor__sub:nth-child('+pagina+')').fadeIn();
+    $('.num').removeClass('texto__sonbra');
+    $(this).addClass('texto__sonbra');
+    posiValor = pagina;
+}
+function siguiente() {
+if (posiValor >= conteValor){
+posiValor =0;
+$('.contenedor__sub').show();
+$('.num').addClass('texto__sonbra');
+}else{
+posiValor++;
+$('.contenedor__sub').hide();
+$('.contenedor__sub:nth-child('+posiValor+')').fadeIn();
+    $('.num').removeClass('texto__sonbra');
+    $('.num:nth-child('+posiValor+')').addClass('texto__sonbra');
+}
+
+};
+num0();
+num1();
+num2();
+num3();
+});
+
+document.querySelector('#btn__yes').addEventListener('click',()=>{
+    $('#no').hide();
+    $('#video').show();
+    $('#btn__yes').addClass('btn__activo');
+$('#btn__no').removeClass('btn__activo');
+});
+document.querySelector('#btn__no').addEventListener('click',()=>{
+    $('#video').hide();
+    $('#no').show();
+$('#btn__no').addClass('btn__activo');
+$('#btn__yes').removeClass('btn__activo');
+    
+});
+
+function num0(){
+const typed0 = new Typed('.typed0', {
+	strings: [
+		'',
+		'<p class="escrito">La pagina la cree<br>para presentarme y decir los que siento <br>y por que aldrin dijo que te escriba<br>ademas podras decir a tus amigos que te crearon una pagina solo para ti</p>'
+	],
+	typeSpeed: 100,
+	startDelay: 300,
+	backDelay: 700,
+	loop: true,
+	loopCount: false,
+	showCursor: true,
+	cursorChar: '_',
+	contentType: 'html',
+});
+}
+function num1(){
+const typed1 = new Typed('.typed1', {
+	strings: [
+		'',
+		'<p class="escrito">Soy amigo de Aldrin<br><b>Mi nombre es: </b>Miquel<br><b>tengo: </b>16 años<br><img src="miimagen.jpg"/><br>:v</p>'
+	],
+	typeSpeed: 100,
+	startDelay: 300,
+	backDelay: 700,
+	loop: true,
+	loopCount: false,
+	showCursor: true,
+	cursorChar: '_',
+	contentType: 'html',
+});
+}
+function num2(){
+const typed2 = new Typed('.typed2', {
+	strings: [
+		'',
+		'<p class="escrito">A mi me gusta la informatica y lo que amo de la informatica es la programacion con que se puede hacer muchas cosas como esta pagina<br>Me gusta ver series animadas hay dos que me guatan actualmente<br>aunque se sumo una algo mas<b> and are you</b></p>'
+	],
+	typeSpeed: 100,
+	startDelay: 300,
+	backDelay: 700,
+	loop: true,
+	loopCount: false,
+	showCursor: true,
+	cursorChar: '_',
+	contentType: 'html',
+});
+}
+function num3(){
+const typed3 = new Typed('.typed3', {
+	strings: [
+		'',
+		'<p class="escrito">bueno esto es raro hasta para mi auque mas raro seria no decirlo haci que i like you, osea como no <br> <img src="krystel.jpg"/><br>🛐<br>y ademas suena bien<br><b>Mitel</b><br>y<br><b>krysquel</b></p>'
+	],
+	typeSpeed: 100,
+	startDelay: 300,
+	backDelay: 700,
+	loop: true,
+	loopCount: false,
+	showCursor: true,
+	cursorChar: '_',
+	contentType: 'html',
+});
+}
 </script>
 </body>
 </html>
